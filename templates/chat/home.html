@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block css %}
+<link rel='stylesheet' href='{% static "css/tiamatchat.css"%}'>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex h-100">
+        <!-- SALAS -->
+        <div class="chat-rooms h-100 w-25">
+            <div class="rooms m-3">
+                <div class="d-flex justify-content-between">
+                    <h3>Tiamat<span class="text-primary">Chat</span></h3>
+                    <button class="btn btn-transparent mb-2"><i class="bi bi-plus-circle-fill text-primary"></i></button>
+                </div>
+
+                <ul class="list-group shadow border-0">
+                    {% for room in rooms%}
+                        <li class="list-group-item">{{room.title}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- MENSAGENS -->
+        <div class="chat-messages h-100 w-75">
+
+            <!-- LISTA mensagens-->
+            <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
+                {% include 'chat/list-messages.html'%}
+            </div>
+
+            <!-- input -->
+            <div class="send-message card m-3 shadow border-0">
+                <form>
+                    <input type="text" class="form-control border-1 fs-5" placeholder="Escreva uma mensagem">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script defer src="{% static 'js/tiamatchat.js'%}"></script
+{% endblock %}
